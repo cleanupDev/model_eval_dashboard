@@ -2,16 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-session = st.session_state
-
 
 @st.cache_data
 def get_session_df():
-    if session.get("df") is None:
+    if st.session_state.get("df") is None:
         st.error("Upload data first")
         st.stop()
     else:
-        return session.df
+        return st.session_state.df
 
 
 def get_model_hyper_params(df):
